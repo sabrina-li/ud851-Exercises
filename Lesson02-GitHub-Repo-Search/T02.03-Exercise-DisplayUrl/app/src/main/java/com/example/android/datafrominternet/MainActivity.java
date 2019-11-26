@@ -18,11 +18,16 @@ package com.example.android.datafrominternet;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.android.datafrominternet.utilities.NetworkUtils;
+
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,8 +48,14 @@ public class MainActivity extends AppCompatActivity {
         mSearchResultsTextView = (TextView) findViewById(R.id.tv_github_search_results_json);
     }
 
-    // TODO (2) Create a method called makeGithubSearchQuery
-    // TODO (3) Within this method, build the URL with the text from the EditText and set the built URL to the TextView
+    void makeGithubSearchQuery (){
+        // TODO (2) Create a method called makeGithubSearchQuery
+        // TODO (3) Within this method, build the URL with the text from the EditText and set the built URL to the TextView
+        String searchQuery = mSearchBoxEditText.getText().toString();
+        URL url = NetworkUtils.buildUrl(searchQuery);
+        Log.d("main activity",url.toString());
+        mUrlDisplayTextView.setText(url.toString());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             String textToShow = "Search clicked";
             Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
             // TODO (5) Call makeGithubSearchQuery when the search menu item is clicked
+            makeGithubSearchQuery ();
             return true;
         }
         return super.onOptionsItemSelected(item);
