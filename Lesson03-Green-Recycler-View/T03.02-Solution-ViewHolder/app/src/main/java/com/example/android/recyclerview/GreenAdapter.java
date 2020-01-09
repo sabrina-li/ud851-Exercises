@@ -15,6 +15,7 @@
  */
 package com.example.android.recyclerview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -72,7 +73,6 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
         NumberViewHolder viewHolder = new NumberViewHolder(view);
-
         return viewHolder;
     }
 
@@ -111,7 +111,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
 
         // COMPLETED (13) Within NumberViewHolder, create a TextView variable called listItemNumberView
         // Will display the position in the list, ie 0 through getItemCount() - 1
-        TextView listItemNumberView;
+        private TextView listItemNumberView;
 
         // COMPLETED (14) Create a constructor for NumberViewHolder that accepts a View called itemView as a parameter
         /**
@@ -134,10 +134,11 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
          * use that integer to display the appropriate text within a list item.
          * @param listIndex Position of the item in the list
          */
-        void bind(int listIndex) {
+        public void bind(int listIndex) {
             // COMPLETED (17) Within bind, set the text of listItemNumberView to the listIndex
             // COMPLETED (18) Be careful to get the String representation of listIndex, as using setText with an int does something different
             listItemNumberView.setText(String.valueOf(listIndex));
+            listItemNumberView.setTextColor(ColorUtils.getViewHolderBackgroundColorFromInstance(listItemNumberView.getContext(),listIndex%17));
         }
     }
 }

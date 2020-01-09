@@ -15,7 +15,9 @@
  */
 package com.example.android.recyclerview;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v7.view.ActionBarPolicy;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -130,7 +132,9 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
          * @param listIndex Position of the item in the list
          */
         void bind(int listIndex) {
+
             listItemNumberView.setText(String.valueOf(listIndex));
+            listItemNumberView.setBackgroundColor(ColorUtils.getViewHolderBackgroundColorFromInstance(itemView.getContext(),listIndex%17));
         }
     }
 }

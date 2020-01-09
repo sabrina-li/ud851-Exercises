@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
          * do things like set the adapter of the RecyclerView and toggle the visibility.
          */
         mNumbersList = (RecyclerView) findViewById(R.id.rv_numbers);
-
         /*
          * A LinearLayoutManager is responsible for measuring and positioning item views within a
          * RecyclerView into a linear list. This means that it can produce either a horizontal or
